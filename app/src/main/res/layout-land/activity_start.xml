@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/to8BtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/to18BtnView"
+            app:layout_constraintEnd_toStartOf="@+id/superEasyBtnView"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/to18BtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/to8BtnView"
+            app:layout_constraintStart_toStartOf="@id/to8BtnView"
+            app:layout_constraintBottom_toTopOf="@+id/to32BtnView"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/to32BtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/to18BtnView"
+            app:layout_constraintStart_toStartOf="@id/to8BtnView"
+            app:layout_constraintBottom_toTopOf="@+id/to50BtnView"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/to50BtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/to32BtnView"
+            app:layout_constraintStart_toStartOf="@id/to8BtnView"
+            app:layout_constraintBottom_toTopOf="@+id/to72BtnView"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/to72BtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/to50BtnView"
+            app:layout_constraintStart_toStartOf="@id/to8BtnView"
+            app:layout_constraintBottom_toTopOf="@id/startBtnView"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/superEasyBtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/easyBtnView"
+            app:layout_constraintStart_toEndOf="@id/to8BtnView"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/easyBtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/superEasyBtnView"
+            app:layout_constraintEnd_toEndOf="@id/superEasyBtnView"
+            app:layout_constraintBottom_toTopOf="@id/normalBtnView"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/normalBtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/easyBtnView"
+            app:layout_constraintEnd_toEndOf="@id/superEasyBtnView"
+            app:layout_constraintBottom_toTopOf="@id/hardBtnView"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/hardBtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/normalBtnView"
+            app:layout_constraintEnd_toEndOf="@id/superEasyBtnView"
+            app:layout_constraintBottom_toTopOf="@id/startBtnView"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/startBtnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/dp_32"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

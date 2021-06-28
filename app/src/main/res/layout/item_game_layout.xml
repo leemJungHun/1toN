@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/round_back">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/gameTxtView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="#1F1664"
+        android:fontFamily="@font/maplestory_oft_bold"
+        android:textSize="@dimen/sp_150"
+        tools:text="1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
