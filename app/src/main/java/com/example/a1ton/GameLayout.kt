@@ -10,7 +10,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 
-class GameLayout(context: Context, attrs: AttributeSet? = null) : ConstraintLayout(context, attrs) {
+class GameLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : ConstraintLayout(context, attrs) {
 
     private var mGameTxtView: AppCompatTextView
     private var mBackground: ConstraintLayout
@@ -57,7 +57,7 @@ class GameLayout(context: Context, attrs: AttributeSet? = null) : ConstraintLayo
         }
     }
 
-    fun nowNumber(nowNumber:Int, level:Int) {
+    fun nowNumber(nowNumber:Int, level:Int, nTOn:Int) {
         when(level){
             1 -> {
                 if(mGameTxtView.text!=""&&nowNumber==mGameTxtView.text.toString().toInt()) {
@@ -67,14 +67,14 @@ class GameLayout(context: Context, attrs: AttributeSet? = null) : ConstraintLayo
                 }
             }
             2 -> {
-                if(mGameTxtView.text!=""&&nowNumber==mGameTxtView.text.toString().toInt()) {
+                if(mGameTxtView.text!=""&&nTOn/5*((nowNumber-1)/(nTOn/5)+1)>=mGameTxtView.text.toString().toInt()&&nTOn/5*((nowNumber-1)/(nTOn/5))<mGameTxtView.text.toString().toInt()) {
                     mGameTxtView.setTextColor(Color.parseColor("#AA4E19"))
                 }else{
                     mGameTxtView.setTextColor(Color.BLACK)
                 }
             }
             3 -> {
-                if(mGameTxtView.text!=""&&nowNumber==mGameTxtView.text.toString().toInt()) {
+                if(mGameTxtView.text!=""&&nTOn/2*((nowNumber-1)/(nTOn/2)+1)>=mGameTxtView.text.toString().toInt()&&nTOn/2*((nowNumber-1)/(nTOn/2))<mGameTxtView.text.toString().toInt()) {
                     mGameTxtView.setTextColor(Color.parseColor("#AA4E19"))
                 }else{
                     mGameTxtView.setTextColor(Color.BLACK)

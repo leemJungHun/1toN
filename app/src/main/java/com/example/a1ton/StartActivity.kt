@@ -7,13 +7,9 @@ import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import com.example.a1ton.databinding.ActivityMainBinding
 import com.example.a1ton.databinding.ActivityStartBinding
-import kotlinx.coroutines.*
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.*
 
@@ -26,12 +22,12 @@ class StartActivity : AppCompatActivity() {
     var standardSize_Y: Int? = null
     var levelSelect = false
     var nToSelect = false
-    var nTOn = 0
+    var nTOn = 0 // n To n (ex: 1 TO 8 = 8)
     var level = 1
     val btnArray = ArrayList<AppCompatButton>()
     val levelBtnArray = ArrayList<AppCompatButton>()
-    var preButton : AppCompatButton? = null
-    var preLevelButton : AppCompatButton? = null
+    var preButton: AppCompatButton? = null
+    var preLevelButton: AppCompatButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +56,7 @@ class StartActivity : AppCompatActivity() {
         binding.to72BtnView.text = "1 To 72"
         binding.superEasyBtnView.text = "SuperEasy"
         binding.easyBtnView.text = "Easy"
-        binding.normalBtnView.text = "Normal8"
+        binding.normalBtnView.text = "Normal"
         binding.hardBtnView.text = "Hard"
         binding.startBtnView.text = "게임 시작"
 
@@ -84,7 +80,7 @@ class StartActivity : AppCompatActivity() {
         }
 
         binding.startBtnView.setOnClickListener {
-            if(levelSelect&&nToSelect){
+            if (levelSelect && nToSelect) {
                 val nextIntent = Intent(this, MainActivity::class.java)
                 nextIntent.putExtra("nTOn", nTOn)
                 nextIntent.putExtra("level", level)
@@ -118,35 +114,35 @@ class StartActivity : AppCompatActivity() {
 
     }
 
-    fun getScreenSize(activity: Activity): Point {
+    private fun getScreenSize(activity: Activity): Point {
         val display = activity.windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
         return size
     }
 
-    fun getStandardSize() {
-        val ScreenSize: Point = getScreenSize(this)
+    private fun getStandardSize() {
+        val screenSize: Point = getScreenSize(this)
         density = resources.displayMetrics.density
-        standardSize_X = (ScreenSize.x / density!!).toInt()
-        standardSize_Y = (ScreenSize.y / density!!).toInt()
+        standardSize_X = (screenSize.x / density!!).toInt()
+        standardSize_Y = (screenSize.y / density!!).toInt()
     }
 
 
     private val onClickListener = View.OnClickListener { view ->
         nTOn = view.tag.toString().toInt()
-        if(preButton!=null){
+        if (preButton != null) {
             preButton!!.isEnabled = true
         }
         preButton = view as AppCompatButton
         view.isEnabled = false
         nToSelect = true
-        Log.e("제곱근","${sqrt(nTOn/2f)}")
+        Log.e("제곱근", "${sqrt(nTOn / 2f)}")
     }
 
     private val levelClickListener = View.OnClickListener { view ->
         level = view.tag.toString().toInt()
-        if(preLevelButton!=null){
+        preLevelButton?.let {
             preLevelButton!!.isEnabled = true
         }
         preLevelButton = view as AppCompatButton
@@ -164,34 +160,6 @@ class StartActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         nTOn = savedInstanceState.getInt("nTOn")
         level = savedInstanceState.getInt("level")
-
-
-        getScreenSize(this)
-        getStandardSize()
-
-        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            binding.to8BtnView.textSize = standardSize_X!! / 20.0f
-            binding.to18BtnView.textSize = standardSize_X!! / 20.0f
-            binding.to32BtnView.textSize = standardSize_X!! / 20.0f
-            binding.to50BtnView.textSize = standardSize_X!! / 20.0f
-            binding.to72BtnView.textSize = standardSize_X!! / 20.0f
-            binding.superEasyBtnView.textSize = standardSize_X!! / 20.0f
-            binding.easyBtnView.textSize = standardSize_X!! / 20.0f
-            binding.normalBtnView.textSize = standardSize_X!! / 20.0f
-            binding.hardBtnView.textSize = standardSize_X!! / 20.0f
-            binding.startBtnView.textSize = standardSize_X!! / 10.0f
-        } else {
-            binding.to8BtnView.textSize = standardSize_Y!! / 20.0f
-            binding.to18BtnView.textSize = standardSize_Y!! / 20.0f
-            binding.to32BtnView.textSize = standardSize_Y!! / 20.0f
-            binding.to50BtnView.textSize = standardSize_Y!! / 20.0f
-            binding.to72BtnView.textSize = standardSize_Y!! / 20.0f
-            binding.superEasyBtnView.textSize = standardSize_Y!! / 20.0f
-            binding.easyBtnView.textSize = standardSize_Y!! / 20.0f
-            binding.normalBtnView.textSize = standardSize_Y!! / 20.0f
-            binding.hardBtnView.textSize = standardSize_Y!! / 20.0f
-            binding.startBtnView.textSize = standardSize_Y!! / 10.0f
-        }
     }
 
 }

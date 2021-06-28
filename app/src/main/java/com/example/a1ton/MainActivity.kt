@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     var mAdapter = NumberAdapter()
 
-    var nTOn = 50
+    var nTOn = 50 // n To n (ex: 1 TO 8 = 8)
     var level = 1
     var sqrtNum = 5.0f
     var useCount = 0
@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity() {
             gameLayout.setOnClickListener(onClickListener)
             gameLayout.layoutParams.width = size!!.toInt()
             gameLayout.layoutParams.height = size!!.toInt()
-            gameLayout.nowNumber(nowNumber, level)
+            gameLayout.nowNumber(nowNumber, level, nTOn)
             gameLayout.setTextSize(size!! / 3)
             nowGameLayout.add(gameLayout)
         }
@@ -212,7 +212,7 @@ class MainActivity : AppCompatActivity() {
                             nowNumber++
                         }
                         for (i in 0 until nowGameLayout.size) {
-                            nowGameLayout[i].nowNumber(nowNumber, level)
+                            nowGameLayout[i].nowNumber(nowNumber, level, nTOn)
                         }
 
                         binding.nowCountTxtView.text = nowNumber.toString()
@@ -243,7 +243,7 @@ class MainActivity : AppCompatActivity() {
                 CoroutineScope(mainDispatcher).launch {
                     delay(500L)
                     for (i in 0 until nowGameLayout.size) {
-                        nowGameLayout[i].nowNumber(nowNumber, level)
+                        nowGameLayout[i].nowNumber(nowNumber, level, nTOn)
                     }
                     window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 }
@@ -261,7 +261,7 @@ class MainActivity : AppCompatActivity() {
         outState.putInt("nowTime", time)
         outState.putInt("nTOn", nTOn)
         outState.putInt("level", level)
-        for(i in 0 until nowNumber){
+        for (i in 0 until nowNumber) {
             countNumbers.remove(i)
         }
         useCount = nTOn - countNumbers.size
